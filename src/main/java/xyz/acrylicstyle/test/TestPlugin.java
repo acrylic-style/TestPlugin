@@ -21,6 +21,6 @@ public class TestPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent e) {
-        ReflectionHelper.setFieldWithoutException(EntityExplodeEvent.class, e, "blocks", (List<Block>) new ArrayList<Block>());
+        // ReflectionHelper.setFieldWithoutException(EntityExplodeEvent.class, e, "blocks", (List<Block>) new ArrayList<Block>());
     }
 }
