@@ -23,5 +23,7 @@ public class TestPlugin extends JavaPlugin implements Listener {
     public void onEntityExplode(EntityExplodeEvent e) {
         e.setCancelled(false);
         // ReflectionHelper.setFieldWithoutException(EntityExplodeEvent.class, e, "blocks", (List<Block>) new ArrayList<Block>());
+        Log.info("Following blocks were affected by explosion:");
+        e.blockList().forEach(block -> Log.info(block.toString()));
     }
 }
