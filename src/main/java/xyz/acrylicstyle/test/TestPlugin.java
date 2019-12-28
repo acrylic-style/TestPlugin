@@ -11,6 +11,8 @@ import util.CollectionList;
 import util.ReflectionHelper;
 import xyz.acrylicstyle.tomeito_core.utils.Log;
 
+import java.util.Iterator;
+
 public class TestPlugin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
@@ -20,11 +22,14 @@ public class TestPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent e) {
+        /*
         e.setCancelled(false);
         CollectionList<Block> blocks = new CollectionList<>(e.blockList());
         blocks = blocks.filter(block -> block.getType() != Material.GLASS);
-        ReflectionHelper.setFieldWithoutException(EntityExplodeEvent.class, e, "blocks", /*(List<Block>)*/ blocks);
+        ReflectionHelper.setFieldWithoutException(EntityExplodeEvent.class, e, "blocks", blocks);
         Log.info("Following blocks were affected by explosion:");
         e.blockList().forEach(block -> Log.info(block.toString()));
+         */
+        e.blockList().removeIf(block -> block.getType() == Material.GLASS);
     }
 }
