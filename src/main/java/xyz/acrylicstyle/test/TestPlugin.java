@@ -7,10 +7,16 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import util.Collection;
 import xyz.acrylicstyle.tomeito_core.utils.Log;
 
+import java.util.UUID;
+
 public class TestPlugin extends JavaPlugin implements Listener {
+    Collection<UUID, ArmorStand> armorStands = new Collection<>();
+
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
@@ -20,9 +26,16 @@ public class TestPlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         ArmorStand armorStand = (ArmorStand) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation().add(0, 0, 0), EntityType.ARMOR_STAND);
-        armorStand.setCustomName(ChatColor.GREEN + "1234567890123456");
+        armorStand.setCustomName(ChatColor.LIGHT_PURPLE + e.getPlayer().getName());
         armorStand.setCustomNameVisible(true);
         armorStand.setVisible(false);
+        armorStand.setSmall(true);
+        armorStands.add(e.getPlayer().getUniqueId(), armorStand);
         e.getPlayer().setPassenger(armorStand);
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e) {
+        armorStands.remove(e.getPlayer().getUniqueId()).remove();
     }
 }
