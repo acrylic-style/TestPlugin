@@ -19,7 +19,7 @@ public class TestPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        ArmorStand armorStand = (ArmorStand) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation().add(0, 2, 0), EntityType.ARMOR_STAND);
+        ArmorStand armorStand = (ArmorStand) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation().add(0, 0, 0), EntityType.ARMOR_STAND);
         armorStand.setCustomName(ChatColor.GREEN + "1234567890123456");
         armorStand.setCustomNameVisible(true);
         armorStand.setVisible(false);
