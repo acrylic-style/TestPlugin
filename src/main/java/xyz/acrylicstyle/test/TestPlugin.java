@@ -29,6 +29,8 @@ public class TestPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent e) {
+        Log.info("Ignited EntityDamageByEntityEvent for type: " + e.getEntityType().name());
+        Log.info("Ignited EntityDamageByEntityEvent for damager type: " + e.getDamager().getType().name());
         if (e.getEntityType() == EntityType.VILLAGER) {
             e.setCancelled(true);
             return;
@@ -39,6 +41,7 @@ public class TestPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
+        Log.info("Ignited EntityDamageEvent for type: " + e.getEntityType().name());
         if (e.getEntityType() == EntityType.VILLAGER) {
             e.setCancelled(true);
             return;
