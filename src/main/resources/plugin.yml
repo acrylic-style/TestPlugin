@@ -1,3 +1,4 @@
-name: "NoCollisions"
+name: "Poison"
+description: "DPI Not isn't Hopper F***"
 version: 0.0.1-SNAPSHOT
-main: xyz.acrylicstyle.test.NoCollisions
+main: xyz.acrylicstyle.test.DamagePlayerIfNotHoldingFoods
