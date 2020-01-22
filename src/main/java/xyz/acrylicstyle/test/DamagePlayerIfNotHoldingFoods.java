@@ -25,7 +25,7 @@ public class DamagePlayerIfNotHoldingFoods extends JavaPlugin implements Listene
                     this.cancel();
                     return;
                 }
-                if (e.getPlayer().getInventory().getItemInMainHand().getType().isEdible()) {
+                if (!e.getPlayer().getInventory().getItemInMainHand().getType().isEdible() || (!e.getPlayer().getInventory().getItemInOffHand().getType().isEdible() && !e.getPlayer().getInventory().getItemInOffHand().getType().isAir())) {
                     e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.POISON, 100000, 0, false, false));
                 } else e.getPlayer().removePotionEffect(PotionEffectType.POISON);
             }
