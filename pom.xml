@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.acrylicstyle</groupId>
-    <artifactId>DamagePlayerIfNotHoldingFoods</artifactId>
+    <artifactId>Poison</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <build>
         <plugins>
