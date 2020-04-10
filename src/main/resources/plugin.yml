@@ -1,4 +1,3 @@
-name: "Poison"
-description: "DPI Not isn't Hopper F***"
+name: "Kikaku"
 version: 0.0.1-SNAPSHOT
-main: xyz.acrylicstyle.test.DamagePlayerIfNotHoldingFoods
+main: xyz.acrylicstyle.test.SummonEntityWhenCraft
