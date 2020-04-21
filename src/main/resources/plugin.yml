@@ -1,3 +1,5 @@
-name: "Kikaku"
+name: "Milano_Cortina"
 version: 0.0.1-SNAPSHOT
-main: xyz.acrylicstyle.test.SummonEntityWhenCraft
+depend:
+  - TomeitoLib
+main: xyz.acrylicstyle.test.RandomEntityEvery1M
