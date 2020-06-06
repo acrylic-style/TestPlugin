@@ -33,21 +33,7 @@ public class RandomEntityEvery1M extends JavaPlugin implements Listener {
                 ).foreach((entity, i, a) -> {
                     Location location = entity.getLocation();
                     entity.remove();
-                    Objects.requireNonNull(location.getWorld())
-                            .spawnEntity(
-                                    location,
-                                    Objects.requireNonNull(ICollectionList.asList(EntityType.values()).filter(t ->
-                                            t != EntityType.PLAYER
-                                                    && t != EntityType.LEASH_HITCH
-                                                    && t.isSpawnable()
-                                                    && t != EntityType.PAINTING
-                                                    && t != EntityType.ITEM_FRAME
-                                                    && t != EntityType.DROPPED_ITEM
-                                                    && t != EntityType.ENDER_DRAGON
-                                                    && t != EntityType.WITHER
-                                                    && t != EntityType.ELDER_GUARDIAN
-                                    ).shuffle().first())
-                            );
+                    RandomEntity.summon(location);
                 });
             }
         }.runTaskTimer(this, 20*60, 20*60);

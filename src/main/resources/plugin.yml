@@ -1,5 +1,12 @@
-name: "Milano_Cortina"
+name: "SharedInventory"
 version: 0.0.1-SNAPSHOT
-depend:
+softdepend: # todo: edit here every time
   - TomeitoLib
-main: xyz.acrylicstyle.test.RandomEntityEvery1M
+main: xyz.acrylicstyle.test.SharedInventory
+commands:
+  add:
+    description: ""
+  removeall:
+    description: ""
+  start:
+    description: ""
