@@ -6,6 +6,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemFlag;
@@ -40,7 +41,8 @@ public class TheBow extends JavaPlugin implements Listener {
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent e) {
         if (e.getDamager().getType() != EntityType.PLAYER) return;
-        ((Player) e.getDamager()).damage(1000);
+        if (e.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || e.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) return; // we do not want loop
+        e.getDamager().getWorld().createExplosion(e.getDamager(), e.getDamager().getLocation(), 8, true);
     }
 
     @EventHandler
@@ -49,7 +51,7 @@ public class TheBow extends JavaPlugin implements Listener {
         if (!(projectile.getShooter() instanceof Player)) return;
         Player shooter = (Player) projectile.getShooter();
         if (!(projectile instanceof Arrow)) {
-            shooter.damage(1000);
+            shooter.getWorld().createExplosion(shooter, shooter.getLocation(), 8, true);
         }
     }
 }

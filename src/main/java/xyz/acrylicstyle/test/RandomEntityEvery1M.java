@@ -12,6 +12,7 @@ import xyz.acrylicstyle.tomeito_api.utils.Log;
 import java.util.Objects;
 
 @SuppressWarnings("DuplicatedCode")
+// done
 public class RandomEntityEvery1M extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {

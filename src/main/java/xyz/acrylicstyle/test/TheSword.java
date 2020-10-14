@@ -13,6 +13,7 @@ import xyz.acrylicstyle.tomeito_api.utils.Log;
 /**
  * The player dies instantly when player tries to attack other entities without using a sword.
  */
+// done
 public class TheSword extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {

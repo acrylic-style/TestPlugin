@@ -7,11 +7,12 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
+import util.EventEmitter;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class VideoListener implements Listener {
+public class VideoListener extends EventEmitter implements Listener {
     public static boolean isStarted = false;
     public String objective;
     private BukkitRunnable runnable = null;
@@ -24,6 +25,7 @@ public class VideoListener implements Listener {
         this.objective = what;
         Objects.requireNonNull(Bukkit.getPluginCommand("start")).setExecutor((sender, command, label, args) -> {
             VideoListener.isStarted = true;
+            this.emit("started");
             Bukkit.broadcastMessage(ChatColor.YELLOW + "ゲームが始まりました！");
             Bukkit.broadcastMessage(ChatColor.YELLOW + "縛り内容: " + ChatColor.GREEN + objective);
             new ArrayList<>(Bukkit.getOnlinePlayers()).forEach(p -> p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 100, 1));
@@ -57,7 +59,7 @@ public class VideoListener implements Listener {
         if (e.getBlock().getType() == Material.DIAMOND_ORE) {
             isStarted = false;
             Bukkit.getOnlinePlayers().forEach(player -> {
-                player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
+                player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 0.75F, 1);
                 player.sendTitle(ChatColor.GOLD + "Congratulations!", ChatColor.YELLOW + "クリアおめでとう！", 10, 80, 10);
                 player.sendMessage(ChatColor.YELLOW + e.getPlayer().getName() + "がダイヤモンドを採掘したので、チャレンジがクリアされました！");
             });

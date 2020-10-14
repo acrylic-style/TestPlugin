@@ -38,14 +38,14 @@ public enum BlockType {
             Material.JUNGLE_LOG,
             Material.SPRUCE_LOG
     ),
-    ATTACK("攻撃", (Material) null);
+    ATTACK("攻撃", (Material[]) null);
 
     private final String name;
     private final CollectionList<Material> types;
 
     BlockType(String name, Material... types) {
         this.name = name;
-        this.types = ICollectionList.asList(types);
+        this.types = types == null ? null : ICollectionList.asList(types);
     }
 
     public String getName() {

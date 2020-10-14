@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// ?
 public class EverythingIsCreeper extends JavaPlugin implements Listener {
     public List<UUID> ignited = new ArrayList<>();
 

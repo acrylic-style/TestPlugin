@@ -1,12 +1,6 @@
-name: "SharedInventory"
+name: "BOXINGch"
 version: 0.0.1-SNAPSHOT
 softdepend: # todo: edit here every time
   - TomeitoLib
-main: xyz.acrylicstyle.test.SharedInventory
-commands:
-  add:
-    description: ""
-  removeall:
-    description: ""
-  start:
-    description: ""
+main: xyz.acrylicstyle.test.BOXINGch
+api-version: "1.15"
