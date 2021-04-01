@@ -1,7 +1,6 @@
 package xyz.acrylicstyle.test.utils;
 
 import org.bukkit.Material;
-import util.CollectionList;
 import util.ICollectionList;
 
 public enum BlockType {
@@ -41,7 +40,7 @@ public enum BlockType {
     ATTACK("攻撃", (Material[]) null);
 
     private final String name;
-    private final CollectionList<Material> types;
+    private final ICollectionList<Material> types;
 
     BlockType(String name, Material... types) {
         this.name = name;
@@ -52,7 +51,7 @@ public enum BlockType {
         return name;
     }
 
-    public CollectionList<Material> getTypes() {
+    public ICollectionList<Material> getTypes() {
         return types;
     }
 }

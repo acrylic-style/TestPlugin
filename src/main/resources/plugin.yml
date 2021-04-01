@@ -1,6 +1,9 @@
-name: "BOXINGch"
+name: "Plugin"
 version: 0.0.1-SNAPSHOT
 softdepend: # todo: edit here every time
   - TomeitoLib
-main: xyz.acrylicstyle.test.BOXINGch
-api-version: "1.15"
+main: xyz.acrylicstyle.test.NoSun
+api-version: "1.13"
+commands:
+  start:
+    description: ""

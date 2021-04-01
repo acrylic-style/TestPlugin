@@ -1,6 +1,8 @@
 package xyz.acrylicstyle.test;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,7 +28,11 @@ public class TheSword extends JavaPlugin implements Listener {
         if (e.getDamager().getType() != EntityType.PLAYER) return;
         Player damager = (Player) e.getDamager();
         ItemStack item = damager.getInventory().getItemInMainHand();
-        if (item.getType().name().endsWith("SWORD")) return;
+        if (item.getType() == Material.WOODEN_SWORD) {
+            damager.getInventory().setItemInMainHand(null);
+            damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_SHIELD_BREAK, 1F, 1F);
+            return;
+        }
         e.setCancelled(true);
         damager.damage(1000);
     }

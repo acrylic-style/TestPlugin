@@ -1,40 +1,10 @@
 package xyz.acrylicstyle.test;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import util.ReflectionHelper;
-import xyz.acrylicstyle.authlib.GameProfile;
-import xyz.acrylicstyle.authlib.properties.Property;
-import xyz.acrylicstyle.authlib.properties.PropertyMap;
-import xyz.acrylicstyle.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import xyz.acrylicstyle.minecraft.*;
-import xyz.acrylicstyle.tomeito_api.command.PlayerCommandExecutor;
-
-import java.util.Objects;
 
 public class NMSTest extends JavaPlugin {
     @Override
-    public void onEnable() {
-        Objects.requireNonNull(Bukkit.getPluginCommand("add")).setExecutor(new PlayerCommandExecutor() {
-            @Override
-            public void onCommand(Player player, String[] args) {
-                Player p = Bukkit.getPlayer(args[0]);
-                PlayerConnection playerConnection = new CraftPlayer(p).getHandle().playerConnection;
-                try {
-                    playerConnection.sendPacket(new PacketPlayOutEntityDestroy(ReflectionHelper.getFieldWithoutException(Entity.CLASS, new CraftPlayer(player).getHandle().getHandle(), "id")));
-                    EntityPlayer ep = new CraftPlayer(player).getHandle();
-                    GameProfile profile = ep.getProfile();
-                    PropertyMap propertyMap = profile.getProperties();
-                    propertyMap.get("textures").clear();
-                    propertyMap.put("textures", new Property("textures", Constants.HUNTER_SKIN_VALUE, Constants.HUNTER_SKIN_SIGNATURE));
-                    profile.setProperties(propertyMap);
-                    EntityPlayer entityPlayer = new EntityPlayer(ep.server, MinecraftServer.getServer().getWorldServer(0), profile, ep.playerInteractManager);
-                    playerConnection.sendPacket(new PacketPlayOutNamedEntitySpawn(entityPlayer));
-                } catch (ReflectiveOperationException e) { throw new RuntimeException(e); }
-            }
-        });
-    }
+    public void onEnable() {}
 
     public static class Constants {
         private Constants() {}

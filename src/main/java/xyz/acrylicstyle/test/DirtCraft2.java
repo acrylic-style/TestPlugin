@@ -10,16 +10,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import util.CollectionList;
-import xyz.acrylicstyle.paper.DamageSource;
 import xyz.acrylicstyle.test.utils.VideoListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-// ?
+// done
 public class DirtCraft2 extends JavaPlugin implements Listener {
     public static CollectionList<UUID> list = new CollectionList<>();
     public static final List<Material> allowedBlocks = new ArrayList<>();
@@ -77,7 +78,7 @@ public class DirtCraft2 extends JavaPlugin implements Listener {
         list.add(e.getPlayer().getUniqueId());
         Block block = e.getFrom().subtract(0, 0.5D, 0).getBlock();
         if (!ignoredBlocks.contains(block.getType()) && !allowedBlocks.contains(block.getType())) {
-            e.getPlayer().damage(DamageSource.MAGIC, 1000);
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 10));
         }
         new BukkitRunnable() {
             @Override
